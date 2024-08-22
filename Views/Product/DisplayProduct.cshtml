@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Inventory_Management.Models.Product>
+
+@{
+    ViewBag.Title = "DisplayProduct";
+}
+
+<p>
+    @Html.ActionLink("Create New", "CreateProduct",new {}, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr class="bg-success">
+        <th>
+            @Html.DisplayName("Product Name")
+        </th>
+        <th>
+            @Html.DisplayName("Product Quantity")
+        </th>
+        <th>
+            @Html.DisplayName("Actions")
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductQty)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "UpdateProduct", new { id=item.Id }, new {@class="btn btn-primary"}) 
+            @Html.ActionLink("Details", "DetailsProduct", new { id=item.Id }, new { @class = "btn btn-success" }) 
+            @Html.ActionLink("Delete", "DeleteProduct", new { id=item.Id }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
